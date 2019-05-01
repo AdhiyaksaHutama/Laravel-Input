@@ -28,4 +28,12 @@ Route::post('/posts',[
     'uses' => 'Postscontroller@store',
     'as' => 'posts.store'
 ] );
+
+Route::delete('/shows',[
+    'uses' => 'Postscontroller@destroy',
+    'as' => 'posts.destroy'
+] );
+
+Route::get('/shows','Postscontroller@viewShow');
 Route::resource('posts', 'Postscontroller');
+

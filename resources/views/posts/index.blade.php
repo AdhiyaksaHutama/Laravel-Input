@@ -88,8 +88,16 @@
     <input class="form-control" type="text" name="pengarang">
   
     </div>
+
+    
+    <div class="form-group">
+    <label>Penerbit</label>
+    <input class="form-control" type="text" name="penerbit">
+  
+    </div>
     
     <button class="btn btn-primary">Submit</button>
+    <a href="<?php echo url('shows') ?>"class="btn btn-primary" style="left:20px;position:relative">Data Buku</a>
 </form>
 <div>
 <div>

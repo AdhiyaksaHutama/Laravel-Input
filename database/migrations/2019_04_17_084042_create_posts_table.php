@@ -15,9 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul');
-            $table->string('tahun_terbit');
-            $table->string('pengarang');
+            $table->string('judul',20);
+            $table->string('penerbit',20);
+            $table->string('tahun_terbit',20);
+            $table->string('pengarang',20);
             $table->timestamps();
         });
     }

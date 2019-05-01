@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+
 use App\Post;
 class Postscontroller extends Controller
 {
@@ -13,7 +14,7 @@ class Postscontroller extends Controller
      */
     public function index()
     {
-        
+
         return view('posts.index');
     }
 
@@ -40,6 +41,7 @@ class Postscontroller extends Controller
         $post->judul = $request->input('judul');
         $post->tahun_terbit= $request->input('tahun_terbit');
         $post->pengarang = $request->input('pengarang');
+        $post->penerbit = $request->input('penerbit');
         $post->save();
        
         return redirect('/posts');
@@ -52,11 +54,13 @@ class Postscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
+        public function viewShow(){
+            $posts = \App\Post::all()->toArray();
+
+            return view('posts.show',compact('posts'));
+        }
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,7 +91,10 @@ class Postscontroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $posts = Post::find($id);
+        
+        $posts->delete();
+        return back()->with('succes', 'deleted data'); 
     }
 }
