@@ -81,8 +81,8 @@
       <th scope="col">Penerbit</th>
       <th scope="col">Tahun Terbit</th>
       <th scope="col">Pengarang</th>
-      <th scope="col">Aksi</th>
-     
+      <th scope="col">Edit</th>
+      <th scope="col">Hapus</th>
       
     </tr>
   </thead>
@@ -91,11 +91,12 @@
   @foreach($posts as $row)
     <tr>
      
-      <td>{{$row['id']}}</td> 
-      <td >{{$row['judul']}}</td>
-      <td >{{$row['penerbit']}}</td>
-      <td >{{$row['tahun_terbit']}}</td>
-      <td >{{$row['pengarang']}}</td>
+      <td>{{$row->id}}</td> 
+      <td >{{$row->judul}}</td>
+      <td >{{$row->penerbit}}</td>
+      <td >{{$row->tahun_terbit}}</td>
+      <td >{{$row->pengarang}}</td>
+      <td><a href="{{url('/shows'.$row->id).'/edit'}}">Edit</td>
       <td>
       <form method="POST"action= "{{action('Postscontroller@destroy',
       $row['id'])}}" >

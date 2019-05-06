@@ -56,9 +56,9 @@ class Postscontroller extends Controller
      */
 
         public function viewShow(){
-            $posts = \App\Post::all()->toArray();
+            $posts = \App\Post::all();
 
-            return view('posts.show',compact('posts'));
+            return view('posts.show',compact('posts','id'));
         }
    
     /**
@@ -69,7 +69,8 @@ class Postscontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $posts = DB::table('posts')->where('id',$id)->get();
+        return view('posts.edit',compact('posts',$posts));
     }
 
     /**
@@ -81,7 +82,14 @@ class Postscontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('posts')->where('id',$request->id)->update([
+            'judul' => $request->judul,
+            'penerbit' => $request->penerbit,
+            'tahun_terbit' => $request->tahun_terbit,
+            'pengarang' => $request->pengarang
+        ]);
+        return redirect('/shows');
+        
     }
 
     /**

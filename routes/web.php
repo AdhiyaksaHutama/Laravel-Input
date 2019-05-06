@@ -34,6 +34,8 @@ Route::delete('/shows',[
     'as' => 'posts.destroy'
 ] );
 
+Route::get('/shows{id}/edit','Postscontroller@edit' );
+Route::PATCH('/shows{id}/update','Postscontroller@update');
 Route::get('/shows','Postscontroller@viewShow');
 Route::resource('posts', 'Postscontroller');
 

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $table = 'posts';
+    
+    protected $fillable = ['judul', 'tahun_terbit', 'penerbit','pengarang'];
     public $primaryKey='id';
     public $timestamp = true;
 }
